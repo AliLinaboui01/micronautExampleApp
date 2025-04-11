@@ -18,6 +18,7 @@ import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
@@ -26,32 +27,60 @@ import java.util.Map;
 public class Application {
 
     public static void main(String[] args) throws IOException {
+
+        try {
+            Schema schema = ReflectData.get().getSchema(Salamander.class);
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Encoder encoder = EncoderFactory.get().binaryEncoder(out, null);
+            ReflectDatumWriter<Salamander> datumWriter = new ReflectDatumWriter<>(schema);
+
+            Salamander salamanderInstance = new Salamander(
+                    "ali",
+                    23,
+                    Color.BLUE,
+                    List.of(List.of("test1")),
+                    new BigDecimal("23.122"),
+                    Map.of("key1", Map.of("key1", "val1")),
+                    12.1f
+            ); // create and set properties of Salamander instance
+
+            datumWriter.write(salamanderInstance, encoder);
+            encoder.flush();
+
+            byte[] avroData = out.toByteArray(); // this is the serialized data
+            System.out.println("Serialized data: " + Arrays.toString(avroData));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 //        Schema schema = ReflectData.get().getSchema(Salamander.class);
 //        System.out.println(schema.toString());
 
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(out, null);
-        encoder.writeInt(23);
-
-        encoder.writeArrayStart();
-        encoder.setItemCount(2);
-        encoder.writeString("orange");
-        encoder.writeString("blue");
-        encoder.writeArrayEnd();
-
-        encoder.writeMapStart();
-        encoder.setItemCount(1);
-        encoder.writeString("keyOne");
-        encoder.writeString("val");
-        encoder.writeMapEnd();
-
-        encoder.writeString("foo");
-
-        encoder.flush();
-
-        byte[] avroBytes = out.toByteArray();
-        System.out.println(Arrays.toString(avroBytes));
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//        BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(out, null);
+//        encoder.writeInt(23);
+//
+//        encoder.writeArrayStart();
+//        encoder.setItemCount(2);
+//        encoder.writeString("orange");
+//        encoder.writeString("blue");
+//        encoder.writeArrayEnd();
+//
+//        encoder.writeMapStart();
+//        encoder.setItemCount(1);
+//        encoder.writeString("keyOne");
+//        encoder.writeString("val");
+//        encoder.writeMapEnd();
+//
+//        encoder.writeString("foo");
+//
+//        encoder.flush();
+//
+//        byte[] avroBytes = out.toByteArray();
+//        System.out.println(Arrays.toString(avroBytes));
 
 //        String userSchemaString = "{\n" +
 //                "  \"type\": \"record\",\n" +

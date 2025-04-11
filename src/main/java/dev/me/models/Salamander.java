@@ -8,22 +8,50 @@ import java.util.Map;
 import java.util.UUID;
 
 
-public record Salamander(
-        String name,
-        int age,
-        Color color,
-        List<List<String>> environments,
-        BigDecimal bd,
-        Map<String, Map<String, String>> doubleMap
-) {
-        enum Color {
-                RED,
-                GREEN,
-                BLUE
+
+public class Salamander{
+        String name;
+        int age;
+        float a;
+        Color color;
+        List<List<String>> environments;
+        BigDecimal bd;
+        Map<String, Map<String, String>>  doubleMap;
+
+
+        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight) {
+                this.name = name;
+                this.age = age;
+                this.color = color;
+                this.environments = environments;
+                this.bd = bd;
+                this.doubleMap = doubleMap;
+                this.a = weight;
         }
 
+        public String name() {
+                return name;
+        }
 
+        public int age() {
+                return age;
+        }
 
+        public Color color() {
+                return color;
+        }
+
+        public List<List<String>> environments() {
+                return environments;
+        }
+
+        public BigDecimal bd() {
+                return bd;
+        }
+
+        public Map<String, Map<String, String>> doubleMap() {
+                return doubleMap;
+        }
 }
 
 
