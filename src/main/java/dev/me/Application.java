@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class Application {
 
@@ -41,7 +42,9 @@ public class Application {
                     List.of(List.of("test1")),
                     new BigDecimal("23.122"),
                     Map.of("key1", Map.of("key1", "val1")),
-                    12.1f
+                    12.1f,
+                    new UUID(2,6),
+                    true
             ); // create and set properties of Salamander instance
 
             datumWriter.write(salamanderInstance, encoder);
@@ -55,8 +58,8 @@ public class Application {
         }
 
 
-//        Schema schema = ReflectData.get().getSchema(Salamander.class);
-//        System.out.println(schema.toString());
+        Schema schema = ReflectData.get().getSchema(Salamander.class);
+        System.out.println(schema.toString());
 
 
 //        ByteArrayOutputStream out = new ByteArrayOutputStream();

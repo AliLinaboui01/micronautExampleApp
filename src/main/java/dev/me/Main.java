@@ -3,8 +3,6 @@ package dev.me;
 import org.apache.avro.Conversions;
 import org.apache.avro.LogicalTypes;
 import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericData;
-import org.apache.avro.generic.GenericDatumWriter;
 import org.apache.avro.io.BinaryEncoder;
 import org.apache.avro.io.EncoderFactory;
 
@@ -28,7 +26,7 @@ public class Main {
         BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(outputStream, null);
 
         encoder.writeBytes(byteBuffer);
-        //encoder.writeFloat(12.1f);
+        encoder.writeFloat(12.1f);
         encoder.flush();
 
         byte[] avroData = outputStream.toByteArray();

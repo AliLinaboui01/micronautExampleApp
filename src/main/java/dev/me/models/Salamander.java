@@ -16,10 +16,12 @@ public class Salamander{
         Color color;
         List<List<String>> environments;
         BigDecimal bd;
+        UUID uuid;
         Map<String, Map<String, String>>  doubleMap;
+        boolean isOkay;
 
 
-        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight) {
+        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight, UUID uuid, boolean isFree) {
                 this.name = name;
                 this.age = age;
                 this.color = color;
@@ -27,6 +29,8 @@ public class Salamander{
                 this.bd = bd;
                 this.doubleMap = doubleMap;
                 this.a = weight;
+                this.uuid = uuid;
+                this.isOkay = isFree;
         }
 
         public String name() {
