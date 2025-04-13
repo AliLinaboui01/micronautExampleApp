@@ -1,6 +1,7 @@
 package dev.me.models;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -19,9 +20,10 @@ public class Salamander{
         UUID uuid;
         Map<String, Map<String, String>>  doubleMap;
         boolean isOkay;
+        BigInteger bigInt;
 
 
-        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight, UUID uuid, boolean isFree) {
+        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight, UUID uuid, boolean isFree, BigInteger bigInt) {
                 this.name = name;
                 this.age = age;
                 this.color = color;
@@ -31,6 +33,7 @@ public class Salamander{
                 this.a = weight;
                 this.uuid = uuid;
                 this.isOkay = isFree;
+                this.bigInt = bigInt;
         }
 
         public String name() {

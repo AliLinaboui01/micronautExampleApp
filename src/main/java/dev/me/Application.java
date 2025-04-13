@@ -19,6 +19,7 @@ import org.apache.avro.specific.SpecificDatumWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +45,8 @@ public class Application {
                     Map.of("key1", Map.of("key1", "val1")),
                     12.1f,
                     new UUID(2,6),
-                    true
+                    true,
+                    new BigInteger("123453322")
             ); // create and set properties of Salamander instance
 
             datumWriter.write(salamanderInstance, encoder);
