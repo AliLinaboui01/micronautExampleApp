@@ -30,34 +30,34 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
 
-        try {
-            Schema schema = ReflectData.get().getSchema(Salamander.class);
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            Encoder encoder = EncoderFactory.get().binaryEncoder(out, null);
-            ReflectDatumWriter<Salamander> datumWriter = new ReflectDatumWriter<>(schema);
-
-            Salamander salamanderInstance = new Salamander(
-                    "ali",
-                    23,
-                    Color.BLUE,
-                    List.of(List.of("test1")),
-                    new BigDecimal("23.122"),
-                    Map.of("key1", Map.of("key1", "val1")),
-                    12.1f,
-                    new UUID(2,6),
-                    true,
-                    new BigInteger("123453322")
-            ); // create and set properties of Salamander instance
-
-            datumWriter.write(salamanderInstance, encoder);
-            encoder.flush();
-
-            byte[] avroData = out.toByteArray(); // this is the serialized data
-            System.out.println("Serialized data: " + Arrays.toString(avroData));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Schema schema = ReflectData.get().getSchema(Salamander.class);
+//            ByteArrayOutputStream out = new ByteArrayOutputStream();
+//            Encoder encoder = EncoderFactory.get().binaryEncoder(out, null);
+//            ReflectDatumWriter<Salamander> datumWriter = new ReflectDatumWriter<>(schema);
+//
+//            Salamander salamanderInstance = new Salamander(
+//                    "ali",
+//                    23,
+//                    Color.BLUE,
+//                    List.of(List.of("test1")),
+//                    new BigDecimal("23.122"),
+//                    Map.of("key1", Map.of("key1", "val1")),
+//                    12.1f,
+//                    new UUID(2,6),
+//                    true,
+//                    new BigInteger("123453322")
+//            ); // create and set properties of Salamander instance
+//
+//            datumWriter.write(salamanderInstance, encoder);
+//            encoder.flush();
+//
+//            byte[] avroData = out.toByteArray(); // this is the serialized data
+//            System.out.println("Serialized data: " + Arrays.toString(avroData));
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
         Schema schema = ReflectData.get().getSchema(Salamander.class);
