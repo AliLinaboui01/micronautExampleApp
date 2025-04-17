@@ -20,21 +20,21 @@ public class Salamander{
         Map<String, Map<String, String>>  doubleMap;
         boolean isOkay;
         BigInteger bigInt;
-        Date date;
-        Timestamp timestamp;
-        Salamander salamander;
-        OffsetTime offsetTime;
-        Duration duration;
-        Character character;
+//        Date date;
+//        Timestamp timestamp;
+//        Salamander salamander;
+//        OffsetTime offsetTime;
+//        Duration duration;
+//        Character character;
         char aChar;
-        Set<String> stringSet;
-        byte zyt;
-        short aShort;
-        Male1 male;
-        Arrays arrays;
-        Vector<String> vector;
+//        Set<String> stringSet;
+//        byte zyt;
+//        short aShort;
+//        Male1 male;
+//        Arrays arrays;
+//        Vector<String> vector;
 
-        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight, UUID uuid, boolean isFree, BigInteger bigInt) {
+        public Salamander(String name, int age, Color color, List<List<String>> environments, BigDecimal bd, Map<String, Map<String, String>> doubleMap, float weight, UUID uuid, boolean isFree, BigInteger bigInt, char aChar) {
                 this.name = name;
                 this.age = age;
                 this.color = color;
@@ -45,7 +45,7 @@ public class Salamander{
                 this.uuid = uuid;
                 this.isOkay = isFree;
                 this.bigInt = bigInt;
-
+                this.aChar = aChar;
         }
 
         public String name() {
