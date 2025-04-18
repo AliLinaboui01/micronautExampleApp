@@ -65,54 +65,54 @@ public class Application {
         System.out.println(schema.toString());
 
 
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//        BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(out, null);
-//        encoder.writeInt(23);
-//
-//        encoder.writeArrayStart();
-//        encoder.setItemCount(2);
-//        encoder.writeString("orange");
-//        encoder.writeString("blue");
-//        encoder.writeArrayEnd();
-//
-//        encoder.writeMapStart();
-//        encoder.setItemCount(1);
-//        encoder.writeString("keyOne");
-//        encoder.writeString("val");
-//        encoder.writeMapEnd();
-//
-//        encoder.writeString("foo");
-//
-//        encoder.flush();
-//
-//        byte[] avroBytes = out.toByteArray();
-//        System.out.println(Arrays.toString(avroBytes));
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(out, null);
+        encoder.writeInt(23);
 
-//        String userSchemaString = "{\n" +
-//                "  \"type\": \"record\",\n" +
-//                "  \"name\": \"User\",\n" +
-//                "  \"fields\": [\n" +
-//                "    {\"name\": \"name\", \"type\": \"string\"},\n" +
-//                "    {\"name\": \"age\", \"type\": \"int\"}\n" +
-//                "  ]\n" +
-//                "}";
-//        Schema schema = new Schema.Parser().parse(userSchemaString);
-//
-//        // Create a User instance
-//        GenericRecordBuilder userBuilder = new GenericRecordBuilder(schema);
-//        userBuilder.set("name", "John Doe");
-//        userBuilder.set("age", 25);
-//        GenericRecord user = userBuilder.build();
-//
-//        // Serialize the User instance to a byte array
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        BinaryEncoder binaryEncoder = EncoderFactory.get().binaryEncoder(outputStream, null);
-//        DatumWriter<GenericRecord> datumWriter = new GenericDatumWriter<>(schema);
-//
-//        datumWriter.write(user, binaryEncoder);
-//        binaryEncoder.flush();
-//        byte[] serializedBytes = outputStream.toByteArray();
-//        System.out.println(Arrays.toString(serializedBytes));
+        encoder.writeArrayStart();
+        encoder.setItemCount(2);
+        encoder.writeString("orange");
+        encoder.writeString("blue");
+        encoder.writeArrayEnd();
+
+        encoder.writeMapStart();
+        encoder.setItemCount(1);
+        encoder.writeString("keyOne");
+        encoder.writeString("val");
+        encoder.writeMapEnd();
+
+        encoder.writeString("foo");
+
+        encoder.flush();
+
+        byte[] avroBytes = out.toByteArray();
+        System.out.println(Arrays.toString(avroBytes));
+
+        String userSchemaString = "{\n" +
+                "  \"type\": \"record\",\n" +
+                "  \"name\": \"User\",\n" +
+                "  \"fields\": [\n" +
+                "    {\"name\": \"name\", \"type\": \"string\"},\n" +
+                "    {\"name\": \"age\", \"type\": \"int\"}\n" +
+                "  ]\n" +
+                "}";
+        //Schema schema = new Schema.Parser().parse(userSchemaString);
+
+        // Create a User instance
+        GenericRecordBuilder userBuilder = new GenericRecordBuilder(schema);
+        userBuilder.set("name", "John Doe");
+        userBuilder.set("age", 25);
+        GenericRecord user = userBuilder.build();
+
+        // Serialize the User instance to a byte array
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        BinaryEncoder binaryEncoder = EncoderFactory.get().binaryEncoder(outputStream, null);
+        DatumWriter<GenericRecord> datumWriter = new GenericDatumWriter<>(schema);
+
+        datumWriter.write(user, binaryEncoder);
+        binaryEncoder.flush();
+        byte[] serializedBytes = outputStream.toByteArray();
+        System.out.println(Arrays.toString(serializedBytes));
 
     }
 
