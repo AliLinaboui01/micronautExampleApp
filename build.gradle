@@ -25,7 +25,8 @@ dependencies {
     testImplementation("com.jayway.jsonpath:json-path:2.9.0")
     testImplementation("io.micronaut:micronaut-http-client")
     testImplementation("org.assertj:assertj-core")
-
+    annotationProcessor("io.micronaut.jsonschema:micronaut-json-schema-processor")
+    implementation("io.micronaut.jsonschema:micronaut-json-schema-annotations")
     implementation 'org.apache.avro:avro:1.11.3'
 
 }
